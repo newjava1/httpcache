@@ -33,25 +33,7 @@ def binder(myWin:MyWindow,myDialog:MyDialog):
     myWin.comboBox_3.currentIndexChanged.connect(lambda:cascadeUrl(myWin))
     myWin.comboBox.currentIndexChanged.connect(lambda:setDomainUrl(myWin))
 
-def setDomainUrl(myWin):
-    datas = get_sys()
-    firstKeys = datas.keys()
-    if len(firstKeys) > 0:
-        for key in firstKeys:
-            syst = myWin.comboBox_3.currentText()
-            domain_url = myWin.comboBox.currentText()
-            urls = datas[key]
-            for urlTmp in urls:
-                sysUrl = urlTmp['sysUrl']
-                if (key == syst and sysUrl == domain_url):
-                    urlTmp['isCurrent']='1'
-                else:
-                    urlTmp['isCurrent']='0'
-    #write
-    with open(name_file_sys,'w+') as f:
-        f.write(json.dumps(datas,indent=2,ensure_ascii=False))
-                
-    
+
 
 
 if __name__=='__main__':
